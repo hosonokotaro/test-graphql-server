@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node main",
+    "dev": "ts-node src/main",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
