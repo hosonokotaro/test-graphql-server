@@ -1,0 +1,16 @@
+"一つの記事"
+type Article {
+  id: String!
+  title: String!
+  content: String
+
+  "Unixtime (microtime)"
+  createDate: String
+
+  release: Boolean
+}
+
+type Query {
+  "記事のリスト"
+  articles: [Article]
+}

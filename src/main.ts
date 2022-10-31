@@ -1,21 +1,14 @@
 import { ApolloServer, gql } from 'apollo-server'
 import axios from 'axios'
+import { join } from 'path'
+import { loadSchemaSync } from '@graphql-tools/load'
+import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader'
+import { addResolversToSchema } from '@graphql-tools/schema'
 
-// NOTE GraphQL Schema の定義
-// ! マークは null 非許容
-const typeDefs = gql`
-  type Article {
-    id: String!
-    title: String!
-    content: String
-    createDate: String
-    release: Boolean
-  }
-
-  type Query {
-    articles: [Article]
-  }
-`
+// NOTE: https://www.the-guild.dev/graphql/tools/docs/schema-loading
+const schema = loadSchemaSync(join(__dirname, './schema.graphql'), {
+  loaders: [new GraphQLFileLoader()],
+})
 
 // TODO: error type を定義する。return null ではないようにしてみたい
 
@@ -36,8 +29,11 @@ const resolvers = {
   },
 }
 
+const schemaWithResolvers = addResolversToSchema({ schema, resolvers })
+
 // NOTE: Init GraphQL server
-const server = new ApolloServer({ typeDefs, resolvers })
+const server = new ApolloServer({ schema: schemaWithResolvers })
+
 server.listen().then(({ url }) => {
   console.log(`Server ready at ${url}`)
 })
