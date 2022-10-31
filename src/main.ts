@@ -1,5 +1,4 @@
 import { ApolloServer, gql } from 'apollo-server'
-import fs from 'fs'
 import axios from 'axios'
 
 // NOTE GraphQL Schema の定義
