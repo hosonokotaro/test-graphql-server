@@ -4,12 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn src/main.ts"
+    "dev": "ts-node-dev --respawn src/main.ts",
+    "codegen": "graphql-codegen --config codegen.yml",
+    "type-check": "tsc --noEmit"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@graphql-codegen/cli": "^2.13.8",
+    "@graphql-codegen/typescript": "^2.8.0",
+    "@graphql-codegen/typescript-resolvers": "^2.7.5",
     "apollo-server": "^3.10.3",
     "graphql": "^16.6.0",
     "prettier": "^2.7.1",
