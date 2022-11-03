@@ -19,6 +19,8 @@
     "@typescript-eslint/parser": "^5.42.0",
     "apollo-server": "^3.10.3",
     "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-simple-import-sort": "^8.0.0",
     "graphql": "^16.6.0",
     "prettier": "^2.7.1",
     "ts-node": "^10.9.1",
