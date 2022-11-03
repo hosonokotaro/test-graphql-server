@@ -1,10 +1,10 @@
-import { ApolloServer, gql } from 'apollo-server'
-import axios from 'axios'
-import { join } from 'path'
-import * as dotenv from 'dotenv'
-import { loadSchemaSync } from '@graphql-tools/load'
 import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader'
+import { loadSchemaSync } from '@graphql-tools/load'
 import { addResolversToSchema } from '@graphql-tools/schema'
+import { ApolloServer } from 'apollo-server'
+import axios from 'axios'
+import * as dotenv from 'dotenv'
+import { join } from 'path'
 
 import { Resolvers } from './types/generated/graphql'
 
@@ -25,7 +25,6 @@ const API_URL = process.env.API_URL
 // NOTE: Resolver の定義
 const resolvers: Resolvers = {
   Query: {
-    // TODO: 型定義を作成して持ってくる
     async articles() {
       try {
         const { data } = await axios.get(`${API_URL}/article-list.json`)
